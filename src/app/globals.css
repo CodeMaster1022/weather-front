@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/*
+ * Committed dark trading-dashboard theme.
+ * Chart colors come from the validated dataviz reference palette (dark-mode
+ * steps): series blue #3987e5; status good/warning/critical for P&L signs
+ * and recommendation badges — always paired with a sign or label, never
+ * color alone.
+ */
+:root {
+  color-scheme: dark;
+  --surface-1: #1a1a19; /* page */
+  --surface-2: #222221; /* cards */
+  --surface-3: #2c2c2a; /* insets */
+  --edge: #383835;
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted: #8a897f;
+  --series-1: #3987e5;
+  --good: #0ca30c;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--surface-1);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
