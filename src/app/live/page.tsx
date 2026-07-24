@@ -135,10 +135,10 @@ export default function LivePage() {
     <main className="viz-root mx-auto w-full max-w-6xl flex-1 px-6 py-8">
       <header className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-[var(--text-primary)]">Live Copy-Trade</h1>
+          <h1 className="text-xl font-bold text-[var(--text-primary)]">Paper Signal Test</h1>
           <p className="text-sm text-[var(--text-secondary)]">
-            The bot opens a virtual position on every BUY signal and closes it on the matching SELL — or close any position
-            yourself with the Sell button.
+            Opens a virtual position on every BUY signal and closes it on the matching SELL — or close one yourself with the
+            Sell button.
           </p>
         </div>
         <div className="flex items-center gap-3 text-sm">
@@ -147,6 +147,20 @@ export default function LivePage() {
           <Link href="/" className="text-[var(--series-1)] hover:underline">Analyzer</Link>
         </div>
       </header>
+
+      <div className="mb-6 rounded-lg border border-[var(--warning)] bg-[var(--surface-2)] px-4 py-3 text-xs leading-relaxed text-[var(--text-secondary)]">
+        <span className="font-semibold" style={{ color: "var(--warning)" }}>
+          Not a forecast of live results.
+        </span>{" "}
+        This account takes <em>every</em> signal. It has no slippage ceiling, no 5-share minimum, no exposure cap, no rate
+        limit, no balance or allowance check, and its orders can never be rejected by the exchange — so it always looks
+        better than reality. In live trading only ~15% of signals actually become fills. To see what real trading would do,
+        use{" "}
+        <Link href="/real" className="underline" style={{ color: "var(--warning)" }}>
+          Live Account
+        </Link>{" "}
+        in dry-run: it runs the identical order path as real money.
+      </div>
 
       <div className="mb-6 flex flex-wrap items-center gap-3 text-xs text-[var(--text-secondary)]">
         <label className="inline-flex items-center gap-1.5">

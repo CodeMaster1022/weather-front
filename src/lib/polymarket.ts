@@ -92,10 +92,23 @@ export async function fetchTrades(wallet: string, start: number, end: number): P
   return all;
 }
 
-/** Redemptions (winnings collected) in the window — part of realized P&L. */
-export async function fetchRedeems(wallet: string, start: number): Promise<Trade[]> {
-  const url = `${DATA_API}/activity?user=${wallet}&type=REDEEM&limit=500&start=${start}&sortDirection=DESC`;
-  return getJson<Trade[]>(url);
+/**
+ * Redemptions (winnings collected) since `start` — part of realized P&L.
+ * Paginated: over a multi-day window a busy wallet blows past a single page.
+ */
+export async function fetchRedeems(wallet: string, start: number, end?: number): Promise<Trade[]> {
+  const limit = 500;
+  const all: Trade[] = [];
+  const endParam = end === undefined ? "" : `&end=${end}`;
+  for (let offset = 0; offset <= 4500; offset += limit) {
+    const batch = await getJson<Trade[]>(
+      `${DATA_API}/activity?user=${wallet}&type=REDEEM&limit=${limit}&offset=${offset}` +
+        `&start=${start}${endParam}&sortDirection=DESC`,
+    );
+    all.push(...batch);
+    if (batch.length < limit) break;
+  }
+  return all;
 }
 
 interface BookLevel { price: string; size: string }

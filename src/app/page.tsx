@@ -191,6 +191,7 @@ export default function Home() {
           </p>
         </div>
         <div className="flex items-center gap-3 text-sm">
+          <Link href="/scout" className="text-[var(--series-1)] hover:underline">Scout</Link>
           <Link href="/live" className="text-[var(--series-1)] hover:underline">Live Test</Link>
           <Link href="/simulate" className="text-[var(--series-1)] hover:underline">Backtest →</Link>
         </div>
